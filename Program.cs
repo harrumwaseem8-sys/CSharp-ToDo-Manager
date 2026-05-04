@@ -213,68 +213,75 @@ namespace To_do_list
                 Task task_main = new Task();
                 call call_main = new call();
 
-                int number_illetrations;
+                Console.WriteLine(" : WELCOME TO TASK TRACKER : ");
+                task_main.Task_starter();
+                Console.WriteLine();
+                Console.WriteLine("only five time operate able ");
                 int i = 0;
+                while (0 < 5)
+                {
+                    char want;
+                    Console.WriteLine("WHAT DO YOU WANT TO TRACK :");
+                    Console.WriteLine();
+                    Console.WriteLine("PRESS a FOR ADD a TASK :");
+                    Console.WriteLine();
+                    Console.WriteLine("PRESS r FOR Removing a TASK :");
+                    Console.WriteLine();
+                    Console.WriteLine("PRESS s FOR checking the status of a TASK :");
+                    Console.WriteLine();
+                    Console.WriteLine("PRESS q FOR quit a TASK :");
+                    Console.WriteLine();
 
-                Console.WriteLine("ENTER YOUR TASK INFO :");
-                call_main.time_control_start();
-                    
-                  
+                    want = char.Parse(Console.ReadLine());
 
-                    Console.WriteLine("now your task is being track : ");
-                    task_main.start_timer();
-
-                    Console.WriteLine("for further update in task manager like want to add (a) or remove (r) tasks");
-                 
-                    Console.WriteLine("Enter the number of tasks you want to add :");
-                    number_illetrations =int.TryParse(Console.ReadLine(), out number_illetrations) ? number_illetrations : 0;
-                    while (i < number_illetrations)
+                    switch (want)
                     {
-                        string want = Console.ReadLine();
-                        if ((want == "a") || (want == "A"))
-                        {
-                            Console.WriteLine("as you want  to add some task in list :");
+
+                        case 'a':
                             call_main.ADD_TASK();
-
-                        }
-                        
-
-
-
-                        else if ((want == "r") || (want == "R"))
-                        {
-                            Console.WriteLine("as you want  to remove some task in list :");
-                           call_main.REM_TASK();
-                        }
-                        else
-                        {
-                            Console.WriteLine("you entered wrong input");
-                        }
-
-
-                        Console.WriteLine("want to check task status (s) ?");
-                        string check = Console.ReadLine();
-                        if ((check == "s") || (check == "S"))
-                        {
-                            call_main.CHECK_TASK ();
-                        }
-                        else
-                        {
-                            Console.WriteLine("you entered wrong input");
-                        }
-                        i++;
+                            Console.WriteLine("task added timer start :");
+                            call_main.time_control_start();
+                            break;
+                        case 'A':
+                            call_main.ADD_TASK();
+                            Console.WriteLine("task added timer start :");
+                            call_main.time_control_start();
+                            break;
+                        case 'r':
+                            call_main.REM_TASK();
+                            Console.WriteLine("The task is removed : ");
+                            break;
+                        case 'R':
+                            call_main.REM_TASK();
+                            Console.WriteLine("The task is removed : ");
+                            break;
+                        case 's':
+                            call_main.CHECK_TASK();
+                            break;
+                        case 'S':
+                            call_main.CHECK_TASK();
+                            break;
+                        case 'q':
+                            call_main.time_control_stop();
+                            break;
+                        case 'Q':
+                            call_main.time_control_stop();
+                            break;
+                        default: break;
+                          
                     }
-                    Console.WriteLine("do you want to quit (q) ?");
-                    string quit = Console.ReadLine();
-                    if ((quit == "q") || (quit == "Q"))
-                    {
-                        Console.WriteLine("Task tracking ended.");
-                        call_main.time_control_stop (); 
-                    }
-                    call_main.write_file();
+                    Console.WriteLine("___________________________");
+                    i++;
+                }
+
+                call_main.write_file();
+
+
+
+            }
 
             }
             }
-        }
+        
     }  
    
